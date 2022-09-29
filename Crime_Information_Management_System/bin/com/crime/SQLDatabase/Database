@@ -1,0 +1,65 @@
+create table CriminalInfo(
+CriminalId int primary key auto_increment,
+Name varchar(15),
+Age int,
+Gender varchar(12),
+Address varchar(15),
+Identifying_mark varchar(30),
+first_arrested_Area varchar(30),
+Which_Crime varchar(15)
+);
+
++---------------------+-------------+------+-----+---------+----------------+
+| Field               | Type        | Null | Key | Default | Extra          |
++---------------------+-------------+------+-----+---------+----------------+
+| CriminalId          | int         | NO   | PRI | NULL    | auto_increment |
+| Name                | varchar(15) | YES  |     | NULL    |                |
+| Age                 | int         | YES  |     | NULL    |                |
+| Gender              | varchar(12) | YES  |     | NULL    |                |
+| Address             | varchar(15) | YES  |     | NULL    |                |
+| Identifying_mark    | varchar(30) | YES  |     | NULL    |                |
+| first_arrested_Area | varchar(30) | YES  |     | NULL    |                |
+| Which_Crime         | varchar(15) | YES  |     | NULL    |                |
++---------------------+-------------+------+-----+---------+----------------+
+
+
+
+create table CrimeInfo(
+Section int primary key auto_increment,
+Date date,
+Place varchar(15),
+Description varchar(15),
+victims int,
+detail_description varchar(50),
+suspectedName varchar(15)
+);
+
++--------------------+-------------+------+-----+---------+----------------+
+| Field              | Type        | Null | Key | Default | Extra          |
++--------------------+-------------+------+-----+---------+----------------+
+| Section            | int         | NO   | PRI | NULL    | auto_increment |
+| Date               | date        | YES  |     | NULL    |                |
+| Place              | varchar(15) | YES  |     | NULL    |                |
+| Description        | varchar(15) | YES  |     | NULL    |                |
+| victims            | int         | YES  |     | NULL    |                |
+| detail_description | varchar(50) | YES  |     | NULL    |                |
+| suspectedName      | varchar(15) | YES  |     | NULL    |                |
++--------------------+-------------+------+-----+---------+----------------+
+
+
+
+create table Crime_CriminalInfo(
+Section int,
+CrimeId int,
+foreign key (CriminalId) references CriminalInfo(CriminalId),
+foreign key (Section) references CrimeInfo(Section)
+);
+
++------------+------+------+-----+---------+-------+
+| Field      | Type | Null | Key | Default | Extra |
++------------+------+------+-----+---------+-------+
+| CriminalId | int  | YES  | MUL | NULL    |       |
+| CrimeId    | int  | YES  | MUL | NULL    |       |
++------------+------+------+-----+---------+-------+
+
+
