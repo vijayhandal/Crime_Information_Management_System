@@ -50,16 +50,18 @@ suspectedName varchar(15)
 
 create table Crime_CriminalInfo(
 Section int,
+Status BOOLEAN NOT NULL,
 CrimeId int,
 foreign key (CriminalId) references CriminalInfo(CriminalId),
 foreign key (Section) references CrimeInfo(Section)
 );
 
-+------------+------+------+-----+---------+-------+
-| Field      | Type | Null | Key | Default | Extra |
-+------------+------+------+-----+---------+-------+
-| CriminalId | int  | YES  | MUL | NULL    |       |
-| CrimeId    | int  | YES  | MUL | NULL    |       |
-+------------+------+------+-----+---------+-------+
++------------+------------+------+-----+---------+-------+
+| Field      | Type       | Null | Key | Default | Extra |
++------------+------------+------+-----+---------+-------+
+| CriminalId | int        | YES  | MUL | NULL    |       |
+| CrimeId    | int        | YES  | MUL | NULL    |       |
+| Status     | tinyint(1) | NO   |     | NULL    |       |
++------------+------------+------+-----+---------+-------+
 
 

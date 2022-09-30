@@ -1,10 +1,11 @@
 package com.crime.Bean;
+import java.sql.Date;
 
 public class Crime {
 	
 	
 	private int Section;
-	private String Date;
+	private String DATE;
 	private String Place;
 	private String Description;
 	private int victims;
@@ -20,7 +21,7 @@ public class Crime {
 			String suspectedName) {
 		super();
 		Section = section;
-		Date = date;
+		DATE = date;
 		Place = place;
 		Description = description;
 		this.victims = victims;
@@ -33,11 +34,14 @@ public class Crime {
 	public void setSection(int section) {
 		Section = section;
 	}
-	public String getDate() {
-		return Date;
+	public Date getDate() {
+		
+		Date date=Date.valueOf(DATE);
+		
+		return date;
 	}
 	public void setDate(String date) {
-		Date = date;
+		DATE = date;
 	}
 	public String getPlace() {
 		return Place;
@@ -71,7 +75,7 @@ public class Crime {
 	}
 	@Override
 	public String toString() {
-		return "Crime [Section=" + Section + ", Date=" + Date + ", Place=" + Place + ", Description=" + Description
+		return "Crime [Section=" + Section + ", Date=" + DATE + ", Place=" + Place + ", Description=" + Description
 				+ ", victims=" + victims + ", detail_description=" + detail_description + ", suspectedName="
 				+ suspectedName + "]";
 	}

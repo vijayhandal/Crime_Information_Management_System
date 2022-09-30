@@ -1,7 +1,6 @@
 package com.crime.UseCases;
 
 import java.util.Scanner;
-
 import com.crime.Bean.Criminal;
 import com.crime.dao.CriminalDao;
 import com.crime.dao.CriminalDaoImpl;
@@ -48,6 +47,12 @@ public class ResisteredCriminalCase1 {
 		c1.setWhich_Crime(Which_Crime);
 		
 		String result = CD.insertCriminalRecord(c1);
+		
+//		CrimeDao c = new CrimeDaoImpl();
+//		
+//		Crime  c2 = new Crime();
+//		c2.setDate("2019-12-12");
+//		c.insertCrimeRecord(c2);
 		
 		System.out.println(result);
 		
