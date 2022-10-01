@@ -1,10 +1,15 @@
 package com.crime.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.crime.Bean.Crime;
+import com.crime.Bean.Criminal;
+import com.crime.exceptions.CrimeException;
+import com.crime.exceptions.CriminalException;
 import com.crime.util.Connect;
 
 public class CrimeDaoImpl implements CrimeDao{
@@ -43,6 +48,48 @@ public class CrimeDaoImpl implements CrimeDao{
 		
 		
 		return message;
+	}
+
+	@Override
+	public Crime searchCrimeBySction(int section) throws CrimeException {
+		// TODO Auto-generated method stub
+		Crime Cm = null;
+		
+		try(Connection conn = Connect.provideconnection()){
+			
+			 PreparedStatement ps = conn.prepareStatement("select * from CrimeInfo where Section = ?");
+			
+			  ps.setInt(1, section);
+			 
+			  ResultSet rs = ps.executeQuery();
+			  
+			  if(rs.next()) {
+				  
+				  int sec = rs.getInt("Section");
+				  String date =  ""+rs.getDate("date");
+				  String Place = rs.getString("Place");
+				  String Description = rs.getString("Description");
+				  int victims = rs.getInt("victims");
+				  String detail_description = rs.getString("detail_description");
+				  String suspectedName = rs.getString("suspectedName");
+				  
+				  Cm = new Crime(sec, date, Place, Description, victims, detail_description, suspectedName);
+				  
+			  }else {
+				  throw new CrimeException("Criminal does not exist with CriminalID "+section);
+			  }
+			 
+			
+			
+		}catch (SQLException e) {
+			// TODO: handle exception
+			
+			e.printStackTrace();	
+			throw new CrimeException(e.getMessage());
+			
+		}
+		
+		return Cm;
 	}
 
 }

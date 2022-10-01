@@ -1,9 +1,8 @@
 package com.crime.dao;
 
-import java.sql.Connection;
+import java.sql.Connection; 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
 import com.crime.Bean.CrimeCriminal;
 import com.crime.util.Connect;
 
@@ -14,11 +13,9 @@ public class CrimeCriminalImpl implements CrimeCriminalDao{
 		// TODO Auto-generated method stub
 		
 		
-String message = "Not Registered!!";
+		String message = "Not Registered!!";
 		
-		Connection conn = Connect.provideconnection();
-		
-		try {
+		try (Connection conn = Connect.provideconnection()){
 			 PreparedStatement ps = conn.prepareStatement("insert into Crime_CriminalInfo(CriminalId,Section,Status) values(?,?,?)");
 			 ps.setInt(1, CrimeCriminal.getCriminalId());
 			 ps.setInt(2, CrimeCriminal.getSection());
