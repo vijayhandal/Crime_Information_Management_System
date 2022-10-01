@@ -48,12 +48,6 @@ public class ResisteredCriminalCase1 {
 		
 		String result = CD.insertCriminalRecord(c1);
 		
-//		CrimeDao c = new CrimeDaoImpl();
-//		
-//		Crime  c2 = new Crime();
-//		c2.setDate("2019-12-12");
-//		c.insertCrimeRecord(c2);
-		
 		System.out.println(result);
 		
 		
