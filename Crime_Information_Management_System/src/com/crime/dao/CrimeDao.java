@@ -9,4 +9,8 @@ public interface CrimeDao {
 	
 	public Crime searchCrimeBySction(int section)throws CrimeException;
 	
+	public int NoOfCrimeRecordedCurrentMonth();
+	
+	
+	
 }

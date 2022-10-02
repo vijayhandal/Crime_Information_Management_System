@@ -13,10 +13,14 @@ public class ResisteredCrimeCase1 {
 
 		Scanner sc = new Scanner(System.in);
 		
+		System.out.println("Enter Section:");
+		
+		int Sec = sc.nextInt();
+		
 		System.out.println("Enter Crime Date (yyyy-MM-dd):");
 		String date = sc.next();
 		
-		System.out.println("Enter Crime Place :");
+		System.out.println("Enter Crime Place:");
 		String place = sc.next();
 		
 		System.out.println("Enter Crime Description(Type of Crime):");
@@ -30,12 +34,13 @@ public class ResisteredCrimeCase1 {
 		System.out.println("Enter Crime detail_description:");
 		String detail_description = sc.nextLine();
 		
-		System.out.println("Enter Crime suspectedName :");
+		System.out.println("Enter Crime suspected Name:");
 		String suspectedName = sc.next();
 		
 		CrimeDao c = new CrimeDaoImpl();
 		
 		Crime  c2 = new Crime();
+		c2.setSection(Sec);
 		c2.setDate(date);
 		c2.setPlace(place);
 		c2.setDescription(Description);
@@ -43,7 +48,6 @@ public class ResisteredCrimeCase1 {
 		c2.setDetail_description(detail_description);
 		c2.setSuspectedName(suspectedName);
 		String result = c.insertCrimeRecord(c2);
-		
 		System.out.println(result);
 	}
 
