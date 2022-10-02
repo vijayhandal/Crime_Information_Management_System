@@ -22,14 +22,15 @@ public class CrimeDaoImpl implements CrimeDao{
 		Connection conn = Connect.provideconnection();
 		
 		try {
-			 PreparedStatement ps = conn.prepareStatement("insert into CrimeInfo(Date,Place,Description,victims,detail_description,suspectedName) values(?,?,?,?,?,?)");
+			 PreparedStatement ps = conn.prepareStatement("insert into CrimeInfo values(?,?,?,?,?,?,?)");
 //			 System.out.println(crime.getDate());
-			 ps.setDate(1, crime.getDate());
-			 ps.setString(2, crime.getPlace());
-			 ps.setString(3, crime.getDescription());
-			 ps.setInt(4, crime.getVictims());
-			 ps.setString(5, crime.getDetail_description());
-			 ps.setString(6, crime.getSuspectedName());
+			 ps.setInt(1, crime.getSection());
+			 ps.setDate(2, crime.getDate());
+			 ps.setString(3, crime.getPlace());
+			 ps.setString(4, crime.getDescription());
+			 ps.setInt(5, crime.getVictims());
+			 ps.setString(6, crime.getDetail_description());
+			 ps.setString(7, crime.getSuspectedName());
 			 
 			 int x = ps.executeUpdate();
 			 
@@ -90,6 +91,31 @@ public class CrimeDaoImpl implements CrimeDao{
 		}
 		
 		return Cm;
+	}
+
+	@Override
+	public int NoOfCrimeRecordedCurrentMonth() {
+		int count = 0;
+		try (Connection conn = Connect.provideconnection()){
+			 PreparedStatement ps = conn.prepareStatement("SELECT SUM(DATE_FORMAT(date, '%Y-%m-01') = DATE_FORMAT(CURRENT_DATE(), '%Y-%m-01')) Count,count(*) FROM CrimeInfo");
+			 
+			
+			 ResultSet c = ps.executeQuery();
+			 if(c.next()) {
+			 count = c.getInt("Count");
+//			 System.out.println(count);
+			 }
+			
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.getMessage();
+			
+		}
+		
+		return count;
 	}
 
 }

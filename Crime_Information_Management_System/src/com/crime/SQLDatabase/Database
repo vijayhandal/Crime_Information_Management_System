@@ -60,8 +60,8 @@ foreign key (Section) references CrimeInfo(Section)
 | Field      | Type       | Null | Key | Default | Extra |
 +------------+------------+------+-----+---------+-------+
 | CriminalId | int        | YES  | MUL | NULL    |       |
-| CrimeId    | int        | YES  | MUL | NULL    |       |
+| Section    | int        | YES  | MUL | NULL    |       |
 | Status     | tinyint(1) | NO   |     | NULL    |       |
 +------------+------------+------+-----+---------+-------+
 
-
+select c.CriminalId c.Name c.Age c.Gender c.Address c.Identifying_mark c.first_arrested_Area c.Which_Crime e.Section e.Description e.victims e.detail_description from CriminalInfo c INNER JOIN CrimeInfo e INNER JOIN Crime_CriminalInfo ce ON c.Which_Crime = 'Murder'; 

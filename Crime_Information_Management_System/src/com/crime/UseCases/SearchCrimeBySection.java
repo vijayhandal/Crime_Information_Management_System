@@ -8,7 +8,7 @@ import com.crime.dao.CrimeDaoImpl;
 import com.crime.exceptions.CrimeException;
 
 
-public class SearchCrimeBySction {
+public class SearchCrimeBySection {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

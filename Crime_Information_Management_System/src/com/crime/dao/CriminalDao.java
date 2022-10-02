@@ -11,5 +11,7 @@ public interface CriminalDao {
 	public String insertCriminalRecord(Criminal Criminal);
 	
 	public Criminal searchCriminalByCriminalId(int CriminalId)throws CriminalException;
+	
+	public String searchcriminalbyCrime(String which_crime)throws CrimeException,CriminalException;
 
 }
